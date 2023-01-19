@@ -1,0 +1,6 @@
+# ./kustomization.yaml
+resources:
+- deployment-echo.yaml
+- service-echo.yaml
+
+namespace: kecho

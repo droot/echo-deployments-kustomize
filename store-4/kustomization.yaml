@@ -1,0 +1,21 @@
+# ./kustomization.yaml
+resources:
+- ../base
+
+commonLabels:
+  app: store-4
+
+replacements:
+  - source:
+      kind: Deployment
+      name: echo
+      fieldPath: metadata.labels.app
+    targets:
+    - select:
+        kind: Deployment
+        name: echo
+      fieldPaths:
+      - spec.template.spec.containers.[name=echo].args.0
+      options:
+        delimiter: =
+        index: 1
